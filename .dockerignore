@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+python/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+temp/
+*.pid
+.api_pid
+.streamlit_pid
+
+# Cache and temporary files
+*.log
+*.tmp
+*.cache
+uv.lock
+uv-cache/
+
+# Git
+.git/
+.gitignore
+
+# Documentation (optional - remove if you want docs in container)
+docs/
+
+# Tests (optional - remove if you want tests in container)
+tests/
+

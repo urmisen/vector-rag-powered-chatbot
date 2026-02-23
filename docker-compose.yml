@@ -1,0 +1,36 @@
+services:
+  # Single container running both FastAPI and Streamlit
+  regulon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: regulon-app
+    ports:
+      - "0.0.0.0:8000:8000"  # FastAPI - bind to all interfaces for VM access
+      - "0.0.0.0:8501:8501"  # Streamlit - bind to all interfaces for VM access
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      # OAuth redirect URI - must match what's configured in Google Cloud Console
+      - OAUTH_REDIRECT_URI=http://regulator-bot-sandbox.pathaopay.com:8501 
+      # - OAUTH_REDIRECT_URI=http://localhost:8501
+    # Note: env_file removed - .env is created by init.sh inside the container
+    volumes:
+      # Mount credentials (read-only)
+      - ./.gcloud:/app/.gcloud:ro
+      # Mount data directory for FAISS indices
+      - ./data:/app/data
+      # Mount logs directory
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+
+networks:
+  default:
+    name: regulon-network
+

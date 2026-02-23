@@ -1,0 +1,36 @@
+streamlit
+python-dotenv
+PyPDF2
+faiss-cpu
+langchain
+langchain-community
+watchdog
+matplotlib
+seaborn
+pandas
+numpy
+setuptools
+
+# Google Cloud dependencies
+google-cloud-aiplatform
+google-cloud-storage
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+scikit-learn
+
+# OCR
+tesseract
+paddleocr
+pytesseract 
+openpyxl
+pillow
+
+# Legacy dependencies (for analytics only)
+google-generativeai
+langchain_google_genai
+
+# Web server and API
+fastapi
+uvicorn[standard]
